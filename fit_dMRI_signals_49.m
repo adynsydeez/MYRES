@@ -18,58 +18,42 @@ S0 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b0_delta0_image.nii'])).
 
 num_nz = nnz(S0)
 
-Delta = 19;
+Delta = 49;
 diff_time = (Delta - delta/3)*1E-3; % in units of s
 
-% dwi with Delta = 19 ms
-bvec19 = [0 50 350 800 1500 2400 3450 4750 6000]'; % in units of s/mm^2
-%qvec19 = sqrt(bvec19 ./ diff_time19); % in units of 1/mm
+% dwi with Delta = 49 ms
+bvec49 = [0 200 950 2300 4250 6750 9850 13500 17800]';
 
-S1 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b50_delta19_image.nii'])).*brainmask;
-S2 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b350_delta19_image.nii'])).*brainmask;
-S3 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b800_delta19_image.nii'])).*brainmask;
-S4 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b1500_delta19_image.nii'])).*brainmask;
-S5 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b2400_delta19_image.nii'])).*brainmask;
-S6 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b3450_delta19_image.nii'])).*brainmask;
-S7 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b4750_delta19_image.nii'])).*brainmask;
-S8 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b6000_delta19_image.nii'])).*brainmask;
-
+S9  = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b200_delta49_image.nii'])).*brainmask;
+S10 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b950_delta49_image.nii'])).*brainmask;
+S11 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b2300_delta49_image.nii'])).*brainmask;
+S12 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b4250_delta49_image.nii'])).*brainmask;
+S13 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b6750_delta49_image.nii'])).*brainmask;
+S14 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b9850_delta49_image.nii'])).*brainmask;
+S15 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b13500_delta49_image.nii'])).*brainmask;
+S16 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b17800_delta49_image.nii'])).*brainmask;
 
 figure
 tiledlayout(1,9,'TileSpacing','tight','Padding','compact')
 nexttile
 imagesc(squeeze(S0(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 0 s/mm^2', FontSize=14)
-% nexttile
-% imagesc(squeeze(S1(:,:,73))); axis image; view(-90,90); axis off;
-% nexttile
-% imagesc(squeeze(S2(:,:,73))); axis image; view(-90,90); axis off;
 nexttile
-imagesc(squeeze(S3(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 800 s/mm^2', FontSize=14)
+imagesc(squeeze(S9(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 200 s/mm^2', FontSize=14)
 nexttile
-imagesc(squeeze(S4(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 1500 s/mm^2', FontSize=14)
+imagesc(squeeze(S10(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 950 s/mm^2', FontSize=14)
 nexttile
-imagesc(squeeze(S5(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 2400 s/mm^2', FontSize=14)
+imagesc(squeeze(S11(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 2300 s/mm^2', FontSize=14)
 nexttile
-imagesc(squeeze(S6(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 34500 s/mm^2', FontSize=14)
+imagesc(squeeze(S12(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 4250 s/mm^2', FontSize=14)
 nexttile
-imagesc(squeeze(S7(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 4750 s/mm^2', FontSize=14)
+imagesc(squeeze(S13(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 6750 s/mm^2', FontSize=14)
 nexttile
-imagesc(squeeze(S8(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 6000 s/mm^2', FontSize=14)
+imagesc(squeeze(S14(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 9850 s/mm^2', FontSize=14)
+nexttile
+imagesc(squeeze(S15(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 13500 s/mm^2', FontSize=14)
+nexttile
+imagesc(squeeze(S16(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 17800 s/mm^2', FontSize=14)
 colormap("gray")
-
-
-
-% dwi with Delta = 49 ms
-% bvec49 = [200 950 2300 4250 6750 9850 13500 17800]';
-
-% S9  = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b200_delta49_image.nii'])).*brainmask./S0;
-% S10 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b950_delta49_image.nii'])).*brainmask./S0;
-% S11 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b2300_delta49_image.nii'])).*brainmask./S0;
-% S12 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b4250_delta49_image.nii'])).*brainmask./S0;
-% S13 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b6750_delta49_image.nii'])).*brainmask./S0;
-% S14 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b9850_delta49_image.nii'])).*brainmask./S0;
-% S15 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b13500_delta49_image.nii'])).*brainmask./S0;
-% S16 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b17800_delta49_image.nii'])).*brainmask./S0;
 
 
 %% fitting model parameters
@@ -101,20 +85,20 @@ for l= 73 % select one axial slice
             
             Svec = zeros(9,1);
             Svec(1) = S0(x,y,l);
-            Svec(2) = S1(x,y,l);
-            Svec(3) = S2(x,y,l);
-            Svec(4) = S3(x,y,l);
-            Svec(5) = S4(x,y,l);
-            Svec(6) = S5(x,y,l);
-            Svec(7) = S6(x,y,l);
-            Svec(8) = S7(x,y,l);
-            Svec(9) = S8(x,y,l);
+            Svec(2) = S9(x,y,l);
+            Svec(3) = S10(x,y,l);
+            Svec(4) = S11(x,y,l);
+            Svec(5) = S12(x,y,l);
+            Svec(6) = S13(x,y,l);
+            Svec(7) = S14(x,y,l);
+            Svec(8) = S15(x,y,l);
+            Svec(9) = S16(x,y,l);
 
             Svec = Svec/S0(x,y,l);
 
-            [D_MONO(x,y,l), error_MONO(x,y,l)] = fit_voxel_mono(Svec(1:5), bvec19(1:5), Dmin, Dmax);
-            [D_DKI(x,y,l), K_DKI(x,y,l), error_DKI(x,y,l)] = fit_voxel_dki(Svec(1:6), bvec19(1:6), D_guess, K_guess, Dmin, Dmax, Kmin, Kmax);
-            [D_SUB(x,y,l), BETA_SUB(x,y,l), error_SUB(x,y,l)] = fit_voxel_sub_ml(Svec, bvec19, D_guess, beta_guess, Dmin, Dmax, betamin, betamax);
+            [D_MONO(x,y,l), error_MONO(x,y,l)] = fit_voxel_mono(Svec(1:3), bvec49(1:3), Dmin, Dmax);
+            [D_DKI(x,y,l), K_DKI(x,y,l), error_DKI(x,y,l)] = fit_voxel_dki(Svec(1:4), bvec49(1:4), D_guess, K_guess, Dmin, Dmax, Kmin, Kmax);
+            [D_SUB(x,y,l), BETA_SUB(x,y,l), error_SUB(x,y,l)] = fit_voxel_sub_ml(Svec, bvec49, D_guess, beta_guess, Dmin, Dmax, betamin, betamax);
 
         end
     end

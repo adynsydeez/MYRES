@@ -58,20 +58,6 @@ imagesc(squeeze(S8(:,5:95,73))); axis image; view(-90,90); axis off; title('b = 
 colormap("gray")
 
 
-
-% dwi with Delta = 49 ms
-% bvec49 = [200 950 2300 4250 6750 9850 13500 17800]';
-
-% S9  = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b200_delta49_image.nii'])).*brainmask./S0;
-% S10 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b950_delta49_image.nii'])).*brainmask./S0;
-% S11 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b2300_delta49_image.nii'])).*brainmask./S0;
-% S12 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b4250_delta49_image.nii'])).*brainmask./S0;
-% S13 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b6750_delta49_image.nii'])).*brainmask./S0;
-% S14 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b9850_delta49_image.nii'])).*brainmask./S0;
-% S15 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b13500_delta49_image.nii'])).*brainmask./S0;
-% S16 = double(niftiread([FOLDER SUBJECT '_dwi' datatype '_b17800_delta49_image.nii'])).*brainmask./S0;
-
-
 %% fitting model parameters
 
 % mono-exponential model: D
